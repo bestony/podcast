@@ -51,6 +51,7 @@ type Podcast struct {
 	IExplicit   string  `xml:"itunes:explicit,omitempty"`
 	IComplete   string  `xml:"itunes:complete,omitempty"`
 	INewFeedURL string  `xml:"itunes:new-feed-url,omitempty"`
+	IType 			string  `xml:"itunes:type,omitempty"`
 	IOwner      *Author // Author is formatted for itunes as-is
 	ICategories []*ICategory
 
@@ -453,4 +454,8 @@ var parseAuthorNameEmail = func(a *Author) string {
 		}
 	}
 	return author
+}
+
+func (p *Podcast) AddChannelType(channelType string) {
+	p.IType = channelType
 }
