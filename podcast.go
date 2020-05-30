@@ -21,7 +21,7 @@ type Podcast struct {
 	XMLName        xml.Name `xml:"channel"`
 	Title          string   `xml:"title"`
 	Link           string   `xml:"link"`
-	Description    string   `xml:"description"`
+	Description    *Description
 	Category       string   `xml:"category,omitempty"`
 	Cloud          string   `xml:"cloud,omitempty"`
 	Copyright      string   `xml:"copyright,omitempty"`
@@ -40,8 +40,13 @@ type Podcast struct {
 	TextInput      *TextInput
 	AtomLink       *AtomLink
 
+	WSource string `xml:"wavpub:source"`
+
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor     string `xml:"itunes:author,omitempty"`
+
+	ITitle      string `xml:"itunes:title"`
+	ISubtitle   string `xml:"itunes:subtitle,omitempty"`
 	ISummary    *ISummary
 	IBlock      string `xml:"itunes:block,omitempty"`
 	IImage      *IImage
@@ -49,6 +54,7 @@ type Podcast struct {
 	IExplicit   string  `xml:"itunes:explicit,omitempty"`
 	IComplete   string  `xml:"itunes:complete,omitempty"`
 	INewFeedURL string  `xml:"itunes:new-feed-url,omitempty"`
+	IType 			string  `xml:"itunes:type,omitempty"`
 	IOwner      *Author // Author is formatted for itunes as-is
 	ICategories []*ICategory
 
@@ -65,8 +71,11 @@ func New(title, link, description string,
 	pubDate, lastBuildDate *time.Time) Podcast {
 	return Podcast{
 		Title:         title,
+		ITitle: 	     title,
 		Link:          link,
-		Description:   description,
+		Description:   &Description{
+			Text: description,
+		},
 		Generator:     fmt.Sprintf("go podcast v%s (github.com/eduncan911/podcast)", pVersion),
 		PubDate:       parseDateRFC1123Z(pubDate),
 		LastBuildDate: parseDateRFC1123Z(lastBuildDate),
@@ -434,4 +443,11 @@ var parseAuthorNameEmail = func(a *Author) string {
 		}
 	}
 	return author
+}
+
+func (p *Podcast) AddWavePubSource(source string) {
+	p.WSource = source
+}
+func (p *Podcast) AddChannelType(channelType string) {
+	p.IType = channelType
 }
