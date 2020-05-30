@@ -43,7 +43,6 @@ type Podcast struct {
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor     string `xml:"itunes:author,omitempty"`
 	ISubtitle   string `xml:"itunes:subtitle,omitempty"`
-	ISummary    *ISummary
 	IBlock      string `xml:"itunes:block,omitempty"`
 	IImage      *IImage
 	IDuration   string  `xml:"itunes:duration,omitempty"`
@@ -368,19 +367,7 @@ func (p *Podcast) AddSubTitle(subTitle string) {
 //
 // Note that this field is a CDATA encoded field which allows for rich text
 // such as html links: `<a href="http://www.apple.com">Apple</a>`.
-func (p *Podcast) AddSummary(summary string) {
-	count := utf8.RuneCountInString(summary)
-	if count == 0 {
-		return
-	}
-	if count > 4000 {
-		s := []rune(summary)
-		summary = string(s[0:4000])
-	}
-	p.ISummary = &ISummary{
-		Text: summary,
-	}
-}
+
 
 // Bytes returns an encoded []byte slice.
 func (p *Podcast) Bytes() []byte {
