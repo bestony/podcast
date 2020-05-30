@@ -42,6 +42,7 @@ type Podcast struct {
 
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor     string `xml:"itunes:author,omitempty"`
+	ITitle      string `xml:"itunes:title"`
 	ISubtitle   string `xml:"itunes:subtitle,omitempty"`
 	ISummary    *ISummary
 	IBlock      string `xml:"itunes:block,omitempty"`
@@ -66,6 +67,7 @@ func New(title, link, description string,
 	pubDate, lastBuildDate *time.Time) Podcast {
 	return Podcast{
 		Title:         title,
+		ITitle: 	     title,
 		Link:          link,
 		Description:   description,
 		Generator:     fmt.Sprintf("go podcast v%s (github.com/eduncan911/podcast)", pVersion),
