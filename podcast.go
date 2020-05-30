@@ -40,6 +40,8 @@ type Podcast struct {
 	TextInput      *TextInput
 	AtomLink       *AtomLink
 
+	WSource string `xml:"wavpub:source"`
+
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor     string `xml:"itunes:author,omitempty"`
 	ISubtitle   string `xml:"itunes:subtitle,omitempty"`
@@ -451,4 +453,8 @@ var parseAuthorNameEmail = func(a *Author) string {
 		}
 	}
 	return author
+}
+
+func (p *Podcast) AddWavePubSource(source string) {
+	p.WSource = source
 }
