@@ -101,3 +101,33 @@ func TestItemAddEpisodeType(t *testing.T) {
 	// assert
 	assert.EqualValues(t, "test", i.IEpisodeType)
 }
+
+func TestItemAddEpisode(t *testing.T) {
+	t.Parallel()
+
+	i := podcast.Item{
+		Title:       "item.title",
+		Description: "item.desc",
+		Link:        "http://example.com/article.html",
+	}
+	// act
+	i.AddEpisode(1)
+	// assert
+	assert.EqualValues(t, 1, i.IEpisode)
+
+}
+
+func TestItemAddSeason(t *testing.T) {
+	t.Parallel()
+
+	i := podcast.Item{
+		Title:       "item.title",
+		Description: "item.desc",
+		Link:        "http://example.com/article.html",
+	}
+	// act
+	i.AddSeason(1)
+	// assert
+	assert.EqualValues(t, 1, i.ISeason)
+
+}

@@ -49,6 +49,8 @@ type Item struct {
 	IIsClosedCaptioned string `xml:"itunes:isClosedCaptioned,omitempty"`
 	IOrder             string `xml:"itunes:order,omitempty"`
 	IEpisodeType       string `xml:"itunes:episodeType,omitempty"`
+	IEpisode           uint8  `xml:"itunes:episode,omitempty"`
+	ISeason            uint8  `xml:"itunes:season,omitempty"`
 }
 
 // AddEnclosure adds the downloadable asset to the podcast Item.
@@ -112,6 +114,16 @@ func (i *Item) AddDuration(durationInSeconds int64) {
 // AddEpisodeType can set Episode Type
 func (i *Item) AddEpisodeType(episodeType string) {
 	i.IEpisodeType = episodeType
+}
+
+// AddEpisode can set Episode
+func (i *Item) AddEpisode(episode uint8) {
+	i.IEpisode = episode
+}
+
+// AddSeason can set Season
+func (i *Item) AddSeason(season uint8) {
+	i.ISeason = season
 }
 
 var parseDuration = func(duration int64) string {
