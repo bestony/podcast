@@ -4,7 +4,6 @@ import (
 	"encoding/xml"
 	"fmt"
 	"time"
-	"unicode/utf8"
 )
 
 // Item represents a single entry in a podcast.
@@ -40,10 +39,9 @@ type Item struct {
 	Enclosure        *Enclosure
 
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
-	IAuthor            string `xml:"itunes:author,omitempty"`
-	ITitle             string `xml:"itunes:titile,omitempty"`
-	ISubtitle          string `xml:"itunes:subtitle,omitempty"`
-	ISummary           *ISummary
+	IAuthor string `xml:"itunes:author,omitempty"`
+	ITitle  string `xml:"itunes:titile,omitempty"`
+
 	IImage             *IImage
 	IDuration          string `xml:"itunes:duration,omitempty"`
 	IExplicit          string `xml:"itunes:explicit,omitempty"`
@@ -85,23 +83,6 @@ func (i *Item) AddImage(url string) {
 func (i *Item) AddPubDate(datetime *time.Time) {
 	i.PubDate = datetime
 	i.PubDateFormatted = parseDateRFC1123Z(i.PubDate)
-}
-
-// AddSummary adds the iTunes summary.
-//
-// Limit: 4000 characters
-//
-// Note that this field is a CDATA encoded field which allows for rich text
-// such as html links: `<a href="http://www.apple.com">Apple</a>`.
-func (i *Item) AddSummary(summary string) {
-	count := utf8.RuneCountInString(summary)
-	if count > 4000 {
-		s := []rune(summary)
-		summary = string(s[0:4000])
-	}
-	i.ISummary = &ISummary{
-		Text: summary,
-	}
 }
 
 // AddDuration adds the duration to the iTunes duration field.

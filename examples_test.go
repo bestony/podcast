@@ -74,7 +74,6 @@ func ExamplePodcast_AddItem() {
 	item := podcast.Item{
 		Title:       "Episode 1",
 		Description: "Description for Episode 1",
-		ISubtitle:   "A simple episode 1",
 		PubDate:     &date,
 	}
 	item.AddEnclosure(
@@ -82,7 +81,6 @@ func ExamplePodcast_AddItem() {
 		podcast.MP3,
 		183,
 	)
-	item.AddSummary("See more at <a href=\"http://example.com\">Here</a>")
 
 	// add the Item
 	if _, err := p.AddItem(item); err != nil {
@@ -98,9 +96,9 @@ func ExamplePodcast_AddItem() {
 		pp.AuthorFormatted, pp.Category, pp.Comments, pp.Source,
 		pp.PubDate, pp.PubDateFormatted, *pp.Enclosure,
 		pp.IAuthor, pp.IDuration, pp.IExplicit, pp.IIsClosedCaptioned,
-		pp.IOrder, pp.ISubtitle, pp.ISummary)
+		pp.IOrder)
 	// Output:
-	// http://example.com/1.mp3 Episode 1 http://example.com/1.mp3 Description for Episode 1 &{{ }  me@test.com (the name)}     2017-04-22 08:21:52 +0000 UTC Sat, 22 Apr 2017 08:21:52 +0000 {{ } http://example.com/1.mp3 183 183 audio/mpeg audio/mpeg} me@test.com (the name)     A simple episode 1 &{{ } See more at <a href="http://example.com">Here</a>}
+	// http://example.com/1.mp3 Episode 1 http://example.com/1.mp3 Description for Episode 1 &{{ }  me@test.com (the name)}     2017-04-22 08:21:52 +0000 UTC Sat, 22 Apr 2017 08:21:52 +0000 {{ } http://example.com/1.mp3 183 183 audio/mpeg audio/mpeg} me@test.com (the name)
 }
 
 func ExamplePodcast_AddLastBuildDate() {

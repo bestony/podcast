@@ -43,7 +43,6 @@ func Example_httpHandlers() {
 				PubDate:     &d,
 			}
 			item.AddImage("http://example.com/episode-" + n + ".png")
-			item.AddSummary(`item <a href="http://example.com">example.com</a>`)
 			// add a Download to the Item
 			item.AddEnclosure("http://e.com/"+n+".mp3", podcast.MP3, 55*(i+1))
 
@@ -101,7 +100,6 @@ func Example_httpHandlers() {
 	//       <pubDate>Sun, 05 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://e.com/1.mp3" length="110" type="audio/mpeg"></enclosure>
 	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
-	//       <itunes:summary><![CDATA[item <a href="http://example.com">example.com</a>]]></itunes:summary>
 	//       <itunes:image href="http://example.com/episode-1.png"></itunes:image>
 	//     </item>
 	//     <item>
@@ -112,7 +110,6 @@ func Example_httpHandlers() {
 	//       <pubDate>Mon, 06 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://e.com/2.mp3" length="165" type="audio/mpeg"></enclosure>
 	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
-	//       <itunes:summary><![CDATA[item <a href="http://example.com">example.com</a>]]></itunes:summary>
 	//       <itunes:image href="http://example.com/episode-2.png"></itunes:image>
 	//     </item>
 	//   </channel>
@@ -143,11 +140,9 @@ func Example_ioWriter() {
 		item := podcast.Item{
 			Title:       "Episode " + n,
 			Description: "Description for Episode " + n,
-			ISubtitle:   "A simple episode " + n,
 			PubDate:     &d,
 		}
 		item.AddImage("http://example.com/episode-" + n + ".png")
-		item.AddSummary(`item k <a href="http://example.com">example.com</a>`)
 		// add a Download to the Item
 		item.AddEnclosure("http://example.com/"+n+".mp3", podcast.MP3, 55*(i+1))
 
@@ -191,8 +186,6 @@ func Example_ioWriter() {
 	//       <pubDate>Mon, 13 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://example.com/9.mp3" length="550" type="audio/mpeg"></enclosure>
 	//       <itunes:author>jane.doe@example.com (Jane Doe)</itunes:author>
-	//       <itunes:subtitle>A simple episode 9</itunes:subtitle>
-	//       <itunes:summary><![CDATA[item k <a href="http://example.com">example.com</a>]]></itunes:summary>
 	//       <itunes:image href="http://example.com/episode-9.png"></itunes:image>
 	//     </item>
 	//     <item>
@@ -203,8 +196,6 @@ func Example_ioWriter() {
 	//       <pubDate>Tue, 14 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://example.com/10.mp3" length="605" type="audio/mpeg"></enclosure>
 	//       <itunes:author>jane.doe@example.com (Jane Doe)</itunes:author>
-	//       <itunes:subtitle>A simple episode 10</itunes:subtitle>
-	//       <itunes:summary><![CDATA[item k <a href="http://example.com">example.com</a>]]></itunes:summary>
 	//       <itunes:image href="http://example.com/episode-10.png"></itunes:image>
 	//     </item>
 	//   </channel>
