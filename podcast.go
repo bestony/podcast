@@ -43,6 +43,7 @@ type Podcast struct {
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor     string `xml:"itunes:author,omitempty"`
 	ISummary    *ISummary
+	IType       string `xml:"itunes:type,omitempty"`
 	IBlock      string `xml:"itunes:block,omitempty"`
 	IImage      *IImage
 	IDuration   string  `xml:"itunes:duration,omitempty"`
@@ -433,4 +434,9 @@ var parseAuthorNameEmail = func(a *Author) string {
 		}
 	}
 	return author
+}
+
+// AddChannelType can set channel Type
+func (p *Podcast) AddChannelType(channelType string) {
+	p.IType = channelType
 }

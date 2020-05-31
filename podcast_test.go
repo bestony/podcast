@@ -420,3 +420,22 @@ func TestEncodeWriterError(t *testing.T) {
 	assert.Error(t, err)
 	assert.Contains(t, err.Error(), "w.Write return error")
 }
+
+func TestChannelHasType(t *testing.T) {
+	t.Parallel()
+
+	// arrange
+	p := podcast.New("title", "desc", "Link", nil, nil)
+
+	// act
+	p.AddChannelType("")
+
+	// assert
+	assert.EqualValues(t, "", p.IType)
+
+	// act
+	p.AddChannelType("testType")
+
+	// assert
+	assert.EqualValues(t, "testType", p.IType)
+}
