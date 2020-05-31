@@ -131,3 +131,18 @@ func TestItemAddSeason(t *testing.T) {
 	assert.EqualValues(t, 1, i.ISeason)
 
 }
+
+func TestItemAddItitle(t *testing.T) {
+	t.Parallel()
+
+	i := podcast.Item{
+		Title:       "item.title",
+		Description: "item.desc",
+		Link:        "http://example.com/article.html",
+	}
+	// act
+	i.AddItitle("here is a title")
+	// assert
+	assert.EqualValues(t, "here is a title", i.ITitle)
+
+}

@@ -41,6 +41,7 @@ type Item struct {
 
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor            string `xml:"itunes:author,omitempty"`
+	ITitle             string `xml:"itunes:titile,omitempty"`
 	ISubtitle          string `xml:"itunes:subtitle,omitempty"`
 	ISummary           *ISummary
 	IImage             *IImage
@@ -113,6 +114,9 @@ func (i *Item) AddDuration(durationInSeconds int64) {
 
 // AddEpisodeType can set Episode Type
 func (i *Item) AddEpisodeType(episodeType string) {
+	if len(episodeType) == 0 {
+		return
+	}
 	i.IEpisodeType = episodeType
 }
 
@@ -124,6 +128,14 @@ func (i *Item) AddEpisode(episode uint8) {
 // AddSeason can set Season
 func (i *Item) AddSeason(season uint8) {
 	i.ISeason = season
+}
+
+// AddItitle can set itunes:title
+func (i *Item) AddItitle(title string) {
+	if len(title) == 0 {
+		return
+	}
+	i.ITitle = title
 }
 
 var parseDuration = func(duration int64) string {
