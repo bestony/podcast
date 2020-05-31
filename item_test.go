@@ -83,3 +83,21 @@ func TestItemAddDurationLessThanZero(t *testing.T) {
 	// assert
 	assert.EqualValues(t, "", i.IDuration)
 }
+
+func TestItemAddEpisodeType(t *testing.T) {
+	t.Parallel()
+
+	i := podcast.Item{
+		Title:       "item.title",
+		Description: "item.desc",
+		Link:        "http://example.com/article.html",
+	}
+	// act
+	i.AddEpisodeType("")
+	// assert
+	assert.EqualValues(t, "", i.IEpisodeType)
+	// act
+	i.AddEpisodeType("test")
+	// assert
+	assert.EqualValues(t, "test", i.IEpisodeType)
+}
