@@ -42,7 +42,6 @@ type Podcast struct {
 
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor     string `xml:"itunes:author,omitempty"`
-	ISubtitle   string `xml:"itunes:subtitle,omitempty"`
 	ISummary    *ISummary
 	IBlock      string `xml:"itunes:block,omitempty"`
 	IImage      *IImage
@@ -343,23 +342,6 @@ func (p *Podcast) AddPubDate(datetime *time.Time) {
 // UTC time is used by default.
 func (p *Podcast) AddLastBuildDate(datetime *time.Time) {
 	p.LastBuildDate = parseDateRFC1123Z(datetime)
-}
-
-// AddSubTitle adds the iTunes subtitle that is displayed with the title
-// in iTunes.
-//
-// Note that this field should be just a few words long according to Apple.
-// This method will truncate the string to 64 chars if too long with "..."
-func (p *Podcast) AddSubTitle(subTitle string) {
-	count := utf8.RuneCountInString(subTitle)
-	if count == 0 {
-		return
-	}
-	if count > 64 {
-		s := []rune(subTitle)
-		subTitle = string(s[0:61]) + "..."
-	}
-	p.ISubtitle = subTitle
 }
 
 // AddSummary adds the iTunes summary.

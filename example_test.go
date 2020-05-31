@@ -130,7 +130,6 @@ func Example_ioWriter() {
 	)
 
 	// add some channel properties
-	p.ISubtitle = "A simple Podcast"
 	p.AddSummary(`link <a href="http://example.com">example.com</a>`)
 	p.AddImage("http://example.com/podcast.jpg")
 	p.AddAuthor("Jane Doe", "jane.doe@example.com")
@@ -182,7 +181,6 @@ func Example_ioWriter() {
 	//     </image>
 	//     <atom:link href="http://example.com/atom.rss" rel="self" type="application/rss+xml"></atom:link>
 	//     <itunes:author>jane.doe@example.com (Jane Doe)</itunes:author>
-	//     <itunes:subtitle>A simple Podcast</itunes:subtitle>
 	//     <itunes:summary><![CDATA[link <a href="http://example.com">example.com</a>]]></itunes:summary>
 	//     <itunes:image href="http://example.com/podcast.jpg"></itunes:image>
 	//     <item>
