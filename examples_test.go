@@ -123,24 +123,6 @@ func ExamplePodcast_AddPubDate() {
 	// Mon, 30 Jan 2017 08:21:52 +0000
 }
 
-func ExamplePodcast_AddSummary() {
-	p := podcast.New("title", "link", "description", nil, nil)
-
-	// add a summary
-	p.AddSummary(`A very cool podcast with a long summary!
-
-See more at our website: <a href="http://example.com">example.com</a>
-`)
-
-	if p.ISummary != nil {
-		fmt.Println(p.ISummary.Text)
-	}
-	// Output:
-	// A very cool podcast with a long summary!
-	//
-	// See more at our website: <a href="http://example.com">example.com</a>
-}
-
 func ExamplePodcast_Bytes() {
 	p := podcast.New(
 		"eduncan911 Podcasts",
@@ -150,10 +132,6 @@ func ExamplePodcast_Bytes() {
 	)
 	p.AddAuthor("Jane Doe", "me@janedoe.com")
 	p.AddImage("http://janedoe.com/i.jpg")
-	p.AddSummary(`A very cool podcast with a long summary using Bytes()!
-
-See more at our website: <a href="http://example.com">example.com</a>
-`)
 
 	for i := int64(5); i < 7; i++ {
 		n := strconv.FormatInt(i, 10)
@@ -192,10 +170,6 @@ See more at our website: <a href="http://example.com">example.com</a>
 	//       <link>http://eduncan911.com/</link>
 	//     </image>
 	//     <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
-	//     <itunes:summary><![CDATA[A very cool podcast with a long summary using Bytes()!
-	//
-	// See more at our website: <a href="http://example.com">example.com</a>
-	// ]]></itunes:summary>
 	//     <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
 	//     <item>
 	//       <guid>http://example.com/5.mp3</guid>

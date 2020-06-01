@@ -28,7 +28,6 @@ func Example_httpHandlers() {
 		p.AddAuthor("Jane Doe", "me@janedoe.com")
 		p.AddAtomLink("http://eduncan911.com/feed.rss")
 		p.AddImage("http://janedoe.com/i.jpg")
-		p.AddSummary(`link <a href="http://example.com">example.com</a>`)
 		p.IExplicit = "no"
 
 		for i := int64(1); i < 3; i++ {
@@ -89,7 +88,6 @@ func Example_httpHandlers() {
 	//     </image>
 	//     <atom:link href="http://eduncan911.com/feed.rss" rel="self" type="application/rss+xml"></atom:link>
 	//     <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
-	//     <itunes:summary><![CDATA[link <a href="http://example.com">example.com</a>]]></itunes:summary>
 	//     <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
 	//     <itunes:explicit>no</itunes:explicit>
 	//     <item>
@@ -127,7 +125,6 @@ func Example_ioWriter() {
 	)
 
 	// add some channel properties
-	p.AddSummary(`link <a href="http://example.com">example.com</a>`)
 	p.AddImage("http://example.com/podcast.jpg")
 	p.AddAuthor("Jane Doe", "jane.doe@example.com")
 	p.AddAtomLink("http://example.com/atom.rss")
@@ -176,7 +173,6 @@ func Example_ioWriter() {
 	//     </image>
 	//     <atom:link href="http://example.com/atom.rss" rel="self" type="application/rss+xml"></atom:link>
 	//     <itunes:author>jane.doe@example.com (Jane Doe)</itunes:author>
-	//     <itunes:summary><![CDATA[link <a href="http://example.com">example.com</a>]]></itunes:summary>
 	//     <itunes:image href="http://example.com/podcast.jpg"></itunes:image>
 	//     <item>
 	//       <guid>http://example.com/9.mp3</guid>

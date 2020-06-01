@@ -7,7 +7,6 @@ import (
 	"io"
 	"strconv"
 	"time"
-	"unicode/utf8"
 
 	"github.com/pkg/errors"
 )
@@ -43,7 +42,6 @@ type Podcast struct {
 
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor     string `xml:"itunes:author,omitempty"`
-	ISummary    *ISummary
 	IType       string `xml:"itunes:type,omitempty"`
 	IBlock      string `xml:"itunes:block,omitempty"`
 	IImage      *IImage
@@ -344,26 +342,6 @@ func (p *Podcast) AddPubDate(datetime *time.Time) {
 // UTC time is used by default.
 func (p *Podcast) AddLastBuildDate(datetime *time.Time) {
 	p.LastBuildDate = parseDateRFC1123Z(datetime)
-}
-
-// AddSummary adds the iTunes summary.
-//
-// Limit: 4000 characters
-//
-// Note that this field is a CDATA encoded field which allows for rich text
-// such as html links: `<a href="http://www.apple.com">Apple</a>`.
-func (p *Podcast) AddSummary(summary string) {
-	count := utf8.RuneCountInString(summary)
-	if count == 0 {
-		return
-	}
-	if count > 4000 {
-		s := []rune(summary)
-		summary = string(s[0:4000])
-	}
-	p.ISummary = &ISummary{
-		Text: summary,
-	}
 }
 
 // Bytes returns an encoded []byte slice.

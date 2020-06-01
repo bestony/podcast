@@ -364,43 +364,6 @@ func TestAddItemRootIAuthorSetsAuthorIAuthor(t *testing.T) {
 	assert.EqualValues(t, "me@janedoe.com", p.Items[0].IAuthor)
 }
 
-func TestAddSummaryTooLong(t *testing.T) {
-	t.Parallel()
-
-	// arrange
-	p := podcast.New(
-		"title",
-		"desc",
-		"Link",
-		nil, nil)
-	summary := ""
-	for {
-		if len(summary) >= 4051 {
-			break
-		}
-		summary += "jax ss 7 "
-	}
-
-	// act
-	p.AddSummary(summary)
-
-	// assert
-	assert.Len(t, p.ISummary.Text, 4000)
-}
-
-func TestAddSummaryEmpty(t *testing.T) {
-	t.Parallel()
-
-	// arrange
-	p := podcast.New("title", "desc", "Link", nil, nil)
-
-	// act
-	p.AddSummary("")
-
-	// assert
-	assert.Nil(t, p.ISummary)
-}
-
 type errWriter struct{}
 
 func (w errWriter) Write(p []byte) (n int, err error) {
