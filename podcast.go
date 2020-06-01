@@ -424,3 +424,11 @@ func (p *Podcast) AddChannelType(channelType string) {
 func (p *Podcast) AddWavPubSource(source string) {
 	p.WavPubSource = source
 }
+
+// AddOwner  can set iTunes Owner
+func (p *Podcast) AddOwner(name, email string) {
+	p.IOwner = &Author{
+		Email: email,
+		Name:  name,
+	}
+}
