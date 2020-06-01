@@ -36,7 +36,6 @@ type Podcast struct {
 	TTL            int    `xml:"ttl,omitempty"`
 	WebMaster      string `xml:"webMaster,omitempty"`
 	WavPubSource   string `xml:"wavpub:source,omitempty"`
-	Image          *Image
 	TextInput      *TextInput
 	AtomLink       *AtomLink
 
@@ -216,11 +215,7 @@ func (p *Podcast) AddImage(url string) {
 	if len(url) == 0 {
 		return
 	}
-	p.Image = &Image{
-		URL:   url,
-		Title: p.Title,
-		Link:  p.Link,
-	}
+
 	p.IImage = &IImage{HREF: url}
 }
 
@@ -320,11 +315,6 @@ func (p *Podcast) AddItem(i Item) (int, error) {
 		case len(p.ManagingEditor) != 0:
 			i.Author = &Author{Email: p.ManagingEditor}
 			i.IAuthor = p.ManagingEditor
-		}
-	}
-	if i.IImage == nil {
-		if p.Image != nil {
-			i.IImage = &IImage{HREF: p.Image.URL}
 		}
 	}
 

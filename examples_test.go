@@ -55,12 +55,10 @@ func ExamplePodcast_AddImage() {
 	// add the Image
 	p.AddImage("http://example.com/image.jpg")
 
-	if p.Image != nil && p.IImage != nil {
-		fmt.Println(p.Image.URL)
+	if p.IImage != nil {
 		fmt.Println(p.IImage.HREF)
 	}
 	// Output:
-	// http://example.com/image.jpg
 	// http://example.com/image.jpg
 }
 
@@ -147,6 +145,7 @@ func ExamplePodcast_Bytes() {
 			},
 			PubDate: &d,
 		}
+		item.AddImage("http://janedoe.com/i.jpg")
 		if _, err := p.AddItem(item); err != nil {
 			fmt.Println(item.Title, ": error", err.Error())
 			break
@@ -168,11 +167,6 @@ func ExamplePodcast_Bytes() {
 	//     <lastBuildDate>Mon, 06 Feb 2017 08:21:52 +0000</lastBuildDate>
 	//     <managingEditor>me@janedoe.com (Jane Doe)</managingEditor>
 	//     <pubDate>Sat, 04 Feb 2017 08:21:52 +0000</pubDate>
-	//     <image>
-	//       <url>http://janedoe.com/i.jpg</url>
-	//       <title>eduncan911 Podcasts</title>
-	//       <link>http://eduncan911.com/</link>
-	//     </image>
 	//     <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
 	//     <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
 	//     <item>

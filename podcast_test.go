@@ -132,7 +132,6 @@ func TestAddImageEmpty(t *testing.T) {
 	p.AddImage("")
 
 	// assert
-	assert.Nil(t, p.Image)
 	assert.Nil(t, p.IImage)
 }
 

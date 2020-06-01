@@ -83,11 +83,6 @@ func Example_httpHandlers() {
 	//     <lastBuildDate>Mon, 06 Feb 2017 08:21:52 +0000</lastBuildDate>
 	//     <managingEditor>me@janedoe.com (Jane Doe)</managingEditor>
 	//     <pubDate>Sat, 04 Feb 2017 08:21:52 +0000</pubDate>
-	//     <image>
-	//       <url>http://janedoe.com/i.jpg</url>
-	//       <title>eduncan911 Podcasts</title>
-	//       <link>http://eduncan911.com/</link>
-	//     </image>
 	//     <atom:link href="http://eduncan911.com/feed.rss" rel="self" type="application/rss+xml"></atom:link>
 	//     <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
 	//     <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
@@ -170,11 +165,6 @@ func Example_ioWriter() {
 	//     <lastBuildDate>Mon, 06 Feb 2017 08:21:52 +0000</lastBuildDate>
 	//     <managingEditor>jane.doe@example.com (Jane Doe)</managingEditor>
 	//     <pubDate>Wed, 01 Feb 2017 08:21:52 +0000</pubDate>
-	//     <image>
-	//       <url>http://example.com/podcast.jpg</url>
-	//       <title>Sample Podcasts</title>
-	//       <link>http://example.com/</link>
-	//     </image>
 	//     <atom:link href="http://example.com/atom.rss" rel="self" type="application/rss+xml"></atom:link>
 	//     <itunes:author>jane.doe@example.com (Jane Doe)</itunes:author>
 	//     <itunes:image href="http://example.com/podcast.jpg"></itunes:image>
