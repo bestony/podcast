@@ -20,22 +20,22 @@ type Podcast struct {
 	XMLName        xml.Name `xml:"channel"`
 	Title          string   `xml:"title"`
 	Link           string   `xml:"link"`
-	Description    string   `xml:"description"`
-	Category       string   `xml:"category,omitempty"`
-	Cloud          string   `xml:"cloud,omitempty"`
-	Copyright      string   `xml:"copyright,omitempty"`
-	Docs           string   `xml:"docs,omitempty"`
-	Generator      string   `xml:"generator,omitempty"`
-	Language       string   `xml:"language,omitempty"`
-	LastBuildDate  string   `xml:"lastBuildDate,omitempty"`
-	ManagingEditor string   `xml:"managingEditor,omitempty"`
-	PubDate        string   `xml:"pubDate,omitempty"`
-	Rating         string   `xml:"rating,omitempty"`
-	SkipHours      string   `xml:"skipHours,omitempty"`
-	SkipDays       string   `xml:"skipDays,omitempty"`
-	TTL            int      `xml:"ttl,omitempty"`
-	WebMaster      string   `xml:"webMaster,omitempty"`
-	WavPubSource   string   `xml:"wavpub:source,omitempty"`
+	Description    *Description
+	Category       string `xml:"category,omitempty"`
+	Cloud          string `xml:"cloud,omitempty"`
+	Copyright      string `xml:"copyright,omitempty"`
+	Docs           string `xml:"docs,omitempty"`
+	Generator      string `xml:"generator,omitempty"`
+	Language       string `xml:"language,omitempty"`
+	LastBuildDate  string `xml:"lastBuildDate,omitempty"`
+	ManagingEditor string `xml:"managingEditor,omitempty"`
+	PubDate        string `xml:"pubDate,omitempty"`
+	Rating         string `xml:"rating,omitempty"`
+	SkipHours      string `xml:"skipHours,omitempty"`
+	SkipDays       string `xml:"skipDays,omitempty"`
+	TTL            int    `xml:"ttl,omitempty"`
+	WebMaster      string `xml:"webMaster,omitempty"`
+	WavPubSource   string `xml:"wavpub:source,omitempty"`
 	Image          *Image
 	TextInput      *TextInput
 	AtomLink       *AtomLink
@@ -64,9 +64,11 @@ type Podcast struct {
 func New(title, link, description string,
 	pubDate, lastBuildDate *time.Time) Podcast {
 	return Podcast{
-		Title:         title,
-		Link:          link,
-		Description:   description,
+		Title: title,
+		Link:  link,
+		Description: &Description{
+			Text: description,
+		},
 		Generator:     fmt.Sprintf("go podcast v%s (github.com/eduncan911/podcast)", pVersion),
 		PubDate:       parseDateRFC1123Z(pubDate),
 		LastBuildDate: parseDateRFC1123Z(lastBuildDate),

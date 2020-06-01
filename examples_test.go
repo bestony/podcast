@@ -14,7 +14,7 @@ func ExampleNew() {
 	// instantiate a new Podcast
 	p := podcast.New(ti, l, d, &pubDate, &updatedDate)
 
-	fmt.Println(p.Title, p.Link, p.Description, p.Language)
+	fmt.Println(p.Title, p.Link, p.Description.Text, p.Language)
 	fmt.Println(p.PubDate, p.LastBuildDate)
 	// Output:
 	// title link description en-us
@@ -158,7 +158,7 @@ func ExamplePodcast_Bytes() {
 	//   <channel>
 	//     <title>eduncan911 Podcasts</title>
 	//     <link>http://eduncan911.com/</link>
-	//     <description>An example Podcast</description>
+	//     <description><![CDATA[An example Podcast]]></description>
 	//     <generator>go podcast v1.3.1 (github.com/eduncan911/podcast)</generator>
 	//     <language>en-us</language>
 	//     <lastBuildDate>Mon, 06 Feb 2017 08:21:52 +0000</lastBuildDate>

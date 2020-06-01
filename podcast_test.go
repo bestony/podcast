@@ -27,7 +27,7 @@ func TestNewNonNils(t *testing.T) {
 	// assert
 	assert.EqualValues(t, ti, p.Title)
 	assert.EqualValues(t, l, p.Link)
-	assert.EqualValues(t, d, p.Description)
+	assert.EqualValues(t, d, p.Description.Text)
 	assert.True(t, createdDate.Format(time.RFC1123Z) >= p.PubDate)
 	assert.True(t, updatedDate.Format(time.RFC1123Z) >= p.LastBuildDate)
 }
@@ -45,7 +45,7 @@ func TestNewNils(t *testing.T) {
 	now := time.Now().UTC().Format(time.RFC1123Z)
 	assert.EqualValues(t, ti, p.Title)
 	assert.EqualValues(t, l, p.Link)
-	assert.EqualValues(t, d, p.Description)
+	assert.EqualValues(t, d, p.Description.Text)
 	// ensure time.Now().UTC() is set, or close to it
 	assert.True(t, now >= p.PubDate)
 	assert.True(t, now >= p.LastBuildDate)

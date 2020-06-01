@@ -75,7 +75,7 @@ func Example_httpHandlers() {
 	//   <channel>
 	//     <title>eduncan911 Podcasts</title>
 	//     <link>http://eduncan911.com/</link>
-	//     <description>An example Podcast</description>
+	//     <description><![CDATA[An example Podcast]]></description>
 	//     <generator>go podcast v1.3.1 (github.com/eduncan911/podcast)</generator>
 	//     <language>en-us</language>
 	//     <lastBuildDate>Mon, 06 Feb 2017 08:21:52 +0000</lastBuildDate>
@@ -160,7 +160,7 @@ func Example_ioWriter() {
 	//   <channel>
 	//     <title>Sample Podcasts</title>
 	//     <link>http://example.com/</link>
-	//     <description>An example Podcast</description>
+	//     <description><![CDATA[An example Podcast]]></description>
 	//     <generator>go podcast v1.3.1 (github.com/eduncan911/podcast)</generator>
 	//     <language>en-us</language>
 	//     <lastBuildDate>Mon, 06 Feb 2017 08:21:52 +0000</lastBuildDate>
