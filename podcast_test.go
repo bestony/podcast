@@ -159,7 +159,9 @@ func TestAddItemEmptyEnclosureURL(t *testing.T) {
 
 	// arrange
 	p := podcast.New("title", "link", "description", nil, nil)
-	i := podcast.Item{Title: "title", Description: "desc"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}}
 	i.AddEnclosure("", podcast.MP3, 1)
 
 	// act
@@ -176,7 +178,9 @@ func TestAddItemEmptyEnclosureType(t *testing.T) {
 
 	// arrange
 	p := podcast.New("title", "link", "description", nil, nil)
-	i := podcast.Item{Title: "title", Description: "desc"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}}
 	i.AddEnclosure("http://example.com/1.mp3", 99, 1)
 
 	// act
@@ -193,7 +197,9 @@ func TestAddItemEmptyLink(t *testing.T) {
 
 	// arrange
 	p := podcast.New("title", "link", "description", nil, nil)
-	i := podcast.Item{Title: "title", Description: "desc"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}}
 
 	// act
 	added, err := p.AddItem(i)
@@ -209,7 +215,9 @@ func TestAddItemEnclosureLengthMin(t *testing.T) {
 
 	// arrange
 	p := podcast.New("title", "link", "description", nil, nil)
-	i := podcast.Item{Title: "title", Description: "desc"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}}
 	i.AddEnclosure("http://example.com/1.mp3", podcast.MP3, -1)
 
 	// act
@@ -227,7 +235,9 @@ func TestAddItemEnclosureNoLinkOverride(t *testing.T) {
 
 	// arrange
 	p := podcast.New("title", "link", "description", nil, nil)
-	i := podcast.Item{Title: "title", Description: "desc"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}}
 	i.AddEnclosure("http://example.com/1.mp3", podcast.MP3, -1)
 
 	// act
@@ -246,7 +256,9 @@ func TestAddItemEnclosureLinkPresentNoOverride(t *testing.T) {
 	// arrange
 	theLink := "http://someotherurl.com/story.html"
 	p := podcast.New("title", "link", "description", nil, nil)
-	i := podcast.Item{Title: "title", Description: "desc"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}}
 	i.Link = theLink
 	i.AddEnclosure("http://example.com/1.mp3", podcast.MP3, -1)
 
@@ -266,7 +278,9 @@ func TestAddItemNoEnclosureGUIDValid(t *testing.T) {
 	// arrange
 	theLink := "http://someotherurl.com/story.html"
 	p := podcast.New("title", "link", "description", nil, nil)
-	i := podcast.Item{Title: "title", Description: "desc"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}}
 	i.Link = theLink
 
 	// act
@@ -288,9 +302,11 @@ func TestAddItemWithEnclosureGUIDSet(t *testing.T) {
 	length := 3
 	p := podcast.New("title", "link", "description", nil, nil)
 	i := podcast.Item{
-		Title:       "title",
-		Description: "desc",
-		GUID:        theGUID,
+		Title: "title",
+		Description: &podcast.Description{
+			Text: "desc",
+		},
+		GUID: theGUID,
 	}
 	i.AddEnclosure(theLink, podcast.MP3, int64(length))
 
@@ -311,7 +327,9 @@ func TestAddItemAuthor(t *testing.T) {
 	// arrange
 	theAuthor := podcast.Author{Name: "Jane Doe", Email: "me@janedoe.com"}
 	p := podcast.New("title", "link", "description", nil, nil)
-	i := podcast.Item{Title: "title", Description: "desc", Link: "http://a.co/"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}, Link: "http://a.co/"}
 	i.Author = &theAuthor
 
 	// act
@@ -332,7 +350,9 @@ func TestAddItemRootManagingEditorSetsAuthorIAuthor(t *testing.T) {
 	theAuthor := "me@janedoe.com"
 	p := podcast.New("title", "link", "description", nil, nil)
 	p.ManagingEditor = theAuthor
-	i := podcast.Item{Title: "title", Description: "desc", Link: "http://a.co/"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}, Link: "http://a.co/"}
 
 	// act
 	added, err := p.AddItem(i)
@@ -351,7 +371,9 @@ func TestAddItemRootIAuthorSetsAuthorIAuthor(t *testing.T) {
 	// arrange
 	p := podcast.New("title", "link", "description", nil, nil)
 	p.IAuthor = "me@janedoe.com"
-	i := podcast.Item{Title: "title", Description: "desc", Link: "http://a.co/"}
+	i := podcast.Item{Title: "title", Description: &podcast.Description{
+		Text: "desc",
+	}, Link: "http://a.co/"}
 
 	// act
 	added, err := p.AddItem(i)

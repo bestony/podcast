@@ -72,9 +72,11 @@ func ExamplePodcast_AddItem() {
 	// create an Item
 	date := pubDate.AddDate(0, 0, 77)
 	item := podcast.Item{
-		Title:       "Episode 1",
-		Description: "Description for Episode 1",
-		PubDate:     &date,
+		Title: "Episode 1",
+		Description: &podcast.Description{
+			Text: "Description for Episode 1",
+		},
+		PubDate: &date,
 	}
 	item.AddEnclosure(
 		"http://example.com/1.mp3",
@@ -92,7 +94,7 @@ func ExamplePodcast_AddItem() {
 	}
 	pp := p.Items[0]
 	fmt.Println(
-		pp.GUID, pp.Title, pp.Link, pp.Description, pp.Author,
+		pp.GUID, pp.Title, pp.Link, pp.Description.Text, pp.Author,
 		pp.AuthorFormatted, pp.Category, pp.Comments, pp.Source,
 		pp.PubDate, pp.PubDateFormatted, *pp.Enclosure,
 		pp.IAuthor, pp.IDuration, pp.IExplicit, pp.IIsClosedCaptioned,
@@ -138,10 +140,12 @@ func ExamplePodcast_Bytes() {
 		d := pubDate.AddDate(0, 0, int(i+3))
 
 		item := podcast.Item{
-			Title:       "Episode " + n,
-			Link:        "http://example.com/" + n + ".mp3",
-			Description: "Description for Episode " + n,
-			PubDate:     &d,
+			Title: "Episode " + n,
+			Link:  "http://example.com/" + n + ".mp3",
+			Description: &podcast.Description{
+				Text: "Description for Episode " + n,
+			},
+			PubDate: &d,
 		}
 		if _, err := p.AddItem(item); err != nil {
 			fmt.Println(item.Title, ": error", err.Error())
@@ -175,7 +179,7 @@ func ExamplePodcast_Bytes() {
 	//       <guid>http://example.com/5.mp3</guid>
 	//       <title>Episode 5</title>
 	//       <link>http://example.com/5.mp3</link>
-	//       <description>Description for Episode 5</description>
+	//       <description><![CDATA[Description for Episode 5]]></description>
 	//       <pubDate>Sun, 12 Feb 2017 08:21:52 +0000</pubDate>
 	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
 	//       <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
@@ -184,7 +188,7 @@ func ExamplePodcast_Bytes() {
 	//       <guid>http://example.com/6.mp3</guid>
 	//       <title>Episode 6</title>
 	//       <link>http://example.com/6.mp3</link>
-	//       <description>Description for Episode 6</description>
+	//       <description><![CDATA[Description for Episode 6]]></description>
 	//       <pubDate>Mon, 13 Feb 2017 08:21:52 +0000</pubDate>
 	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
 	//       <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
@@ -196,9 +200,11 @@ func ExamplePodcast_Bytes() {
 func ExampleItem_AddPubDate() {
 	p := podcast.New("title", "link", "description", nil, nil)
 	i := podcast.Item{
-		Title:       "item title",
-		Description: "item desc",
-		Link:        "item link",
+		Title: "item title",
+		Description: &podcast.Description{
+			Text: "item description",
+		},
+		Link: "item link",
 	}
 	d := pubDate.AddDate(0, 0, -11)
 
@@ -224,9 +230,11 @@ func ExampleItem_AddPubDate() {
 
 func ExampleItem_AddDuration() {
 	i := podcast.Item{
-		Title:       "item title",
-		Description: "item desc",
-		Link:        "item link",
+		Title: "item title",
+		Description: &podcast.Description{
+			Text: "item desc",
+		},
+		Link: "item link",
 	}
 	d := int64(533)
 

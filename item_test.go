@@ -12,9 +12,11 @@ func TestItemAddImageEmptyUrl(t *testing.T) {
 
 	// arrange
 	i := podcast.Item{
-		Title:       "item.title",
-		Description: "item.desc",
-		Link:        "http://example.com/article.html",
+		Title: "item.title",
+		Description: &podcast.Description{
+			Text: "item.desc",
+		},
+		Link: "http://example.com/article.html",
 	}
 
 	// act
@@ -29,9 +31,11 @@ func TestItemAddDurationZero(t *testing.T) {
 
 	// arrange
 	i := podcast.Item{
-		Title:       "item.title",
-		Description: "item.desc",
-		Link:        "http://example.com/article.html",
+		Title: "item.title",
+		Description: &podcast.Description{
+			Text: "item.desc",
+		},
+		Link: "http://example.com/article.html",
 	}
 	d := int64(0)
 
@@ -47,9 +51,11 @@ func TestItemAddDurationLessThanZero(t *testing.T) {
 
 	// arrange
 	i := podcast.Item{
-		Title:       "item.title",
-		Description: "item.desc",
-		Link:        "http://example.com/article.html",
+		Title: "item.title",
+		Description: &podcast.Description{
+			Text: "item.desc",
+		},
+		Link: "http://example.com/article.html",
 	}
 	d := int64(-13)
 
@@ -64,9 +70,11 @@ func TestItemAddEpisodeType(t *testing.T) {
 	t.Parallel()
 
 	i := podcast.Item{
-		Title:       "item.title",
-		Description: "item.desc",
-		Link:        "http://example.com/article.html",
+		Title: "item.title",
+		Description: &podcast.Description{
+			Text: "item.desc",
+		},
+		Link: "http://example.com/article.html",
 	}
 	// act
 	i.AddEpisodeType("")
@@ -82,9 +90,11 @@ func TestItemAddEpisode(t *testing.T) {
 	t.Parallel()
 
 	i := podcast.Item{
-		Title:       "item.title",
-		Description: "item.desc",
-		Link:        "http://example.com/article.html",
+		Title: "item.title",
+		Description: &podcast.Description{
+			Text: "item.desc",
+		},
+		Link: "http://example.com/article.html",
 	}
 	// act
 	i.AddEpisode(1)
@@ -97,9 +107,11 @@ func TestItemAddSeason(t *testing.T) {
 	t.Parallel()
 
 	i := podcast.Item{
-		Title:       "item.title",
-		Description: "item.desc",
-		Link:        "http://example.com/article.html",
+		Title: "item.title",
+		Description: &podcast.Description{
+			Text: "item.desc",
+		},
+		Link: "http://example.com/article.html",
 	}
 	// act
 	i.AddSeason(1)
@@ -112,9 +124,11 @@ func TestItemAddItitle(t *testing.T) {
 	t.Parallel()
 
 	i := podcast.Item{
-		Title:       "item.title",
-		Description: "item.desc",
-		Link:        "http://example.com/article.html",
+		Title: "item.title",
+		Description: &podcast.Description{
+			Text: "item.desc",
+		},
+		Link: "http://example.com/article.html",
 	}
 	// act
 	i.AddItitle("here is a title")

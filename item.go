@@ -24,11 +24,11 @@ import (
 // - Always set an Enclosure.Length, to be nice to your downloaders.
 // - Use Enclosure.Type instead of setting TypeFormatted for valid extensions.
 type Item struct {
-	XMLName          xml.Name   `xml:"item"`
-	GUID             string     `xml:"guid"`
-	Title            string     `xml:"title"`
-	Link             string     `xml:"link"`
-	Description      string     `xml:"description"`
+	XMLName          xml.Name `xml:"item"`
+	GUID             string   `xml:"guid"`
+	Title            string   `xml:"title"`
+	Link             string   `xml:"link"`
+	Description      *Description
 	Author           *Author    `xml:"-"`
 	AuthorFormatted  string     `xml:"author,omitempty"`
 	Category         string     `xml:"category,omitempty"`
