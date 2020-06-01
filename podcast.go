@@ -36,6 +36,7 @@ type Podcast struct {
 	SkipDays       string   `xml:"skipDays,omitempty"`
 	TTL            int      `xml:"ttl,omitempty"`
 	WebMaster      string   `xml:"webMaster,omitempty"`
+	WavPubSource   string   `xml:"wavpub:source,omitempty"`
 	Image          *Image
 	TextInput      *TextInput
 	AtomLink       *AtomLink
@@ -439,4 +440,9 @@ var parseAuthorNameEmail = func(a *Author) string {
 // AddChannelType can set channel Type
 func (p *Podcast) AddChannelType(channelType string) {
 	p.IType = channelType
+}
+
+// AddWavPubSource can set WavPubSource
+func (p *Podcast) AddWavPubSource(source string) {
+	p.WavPubSource = source
 }

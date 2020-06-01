@@ -439,3 +439,17 @@ func TestChannelHasType(t *testing.T) {
 	// assert
 	assert.EqualValues(t, "testType", p.IType)
 }
+
+func TestChannelHasWavPub(t *testing.T) {
+	t.Parallel()
+
+	// arrange
+	p := podcast.New("title", "desc", "Link", nil, nil)
+
+	// act
+	p.AddWavPubSource("self")
+
+	// assert
+	assert.EqualValues(t, "self", p.WavPubSource)
+
+}
