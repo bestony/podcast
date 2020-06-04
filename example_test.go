@@ -43,6 +43,7 @@ func Example_httpHandlers() {
 				},
 				PubDate: &d,
 			}
+			item.AddWavPubSource("self")
 			item.AddImage("http://example.com/episode-" + n + ".png")
 			// add a Download to the Item
 			item.AddEnclosure("http://e.com/"+n+".mp3", podcast.MP3, 55*(i+1))
@@ -94,6 +95,7 @@ func Example_httpHandlers() {
 	//       <description><![CDATA[Description for Episode 1]]></description>
 	//       <pubDate>Sun, 05 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://e.com/1.mp3" length="110" type="audio/mpeg"></enclosure>
+	//       <wavpub:source>self</wavpub:source>
 	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
 	//       <itunes:image href="http://example.com/episode-1.png"></itunes:image>
 	//     </item>
@@ -104,6 +106,7 @@ func Example_httpHandlers() {
 	//       <description><![CDATA[Description for Episode 2]]></description>
 	//       <pubDate>Mon, 06 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://e.com/2.mp3" length="165" type="audio/mpeg"></enclosure>
+	//       <wavpub:source>self</wavpub:source>
 	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
 	//       <itunes:image href="http://example.com/episode-2.png"></itunes:image>
 	//     </item>

@@ -38,6 +38,8 @@ type Item struct {
 	PubDateFormatted string     `xml:"pubDate,omitempty"`
 	Enclosure        *Enclosure
 
+	WavPubSource string `xml:"wavpub:source,omitempty"`
+
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor string `xml:"itunes:author,omitempty"`
 	ITitle  string `xml:"itunes:titile,omitempty"`
@@ -117,6 +119,11 @@ func (i *Item) AddItitle(title string) {
 		return
 	}
 	i.ITitle = title
+}
+
+// AddWavPubSource can set WavPubSource
+func (i *Item) AddWavPubSource(source string) {
+	i.WavPubSource = source
 }
 
 var parseDuration = func(duration int64) string {
