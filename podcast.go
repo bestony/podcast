@@ -356,6 +356,7 @@ func (p *Podcast) Encode(w io.Writer) error {
 		ATOMNS:   atomLink,
 		Version:  "2.0",
 		Channel:  p,
+		WAVPUB:   "https://www.wavpub.com/dtds/podcast-1.0.dtd",
 	}
 	return p.encode(w, wrapped)
 }
@@ -384,6 +385,7 @@ type podcastWrapper struct {
 	Version  string   `xml:"version,attr"`
 	ATOMNS   string   `xml:"xmlns:atom,attr,omitempty"`
 	ITUNESNS string   `xml:"xmlns:itunes,attr"`
+	WAVPUB   string   `xml:"xmlns:wavpub,attr"`
 	Channel  *Podcast
 }
 
