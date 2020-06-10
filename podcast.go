@@ -261,23 +261,6 @@ func (p *Podcast) AddImage(url string) {
 //     https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 //
 func (p *Podcast) AddItem(i Item) (int, error) {
-	// initial guards for required fields
-	if len(i.Title) == 0 || len(i.Description.Text) == 0 {
-		return len(p.Items), errors.New("Title and Description are required")
-	}
-	if i.Enclosure != nil {
-		if len(i.Enclosure.URL) == 0 {
-			return len(p.Items),
-				errors.New(i.Title + ": Enclosure.URL is required")
-		}
-		if i.Enclosure.Type.String() == enclosureDefault {
-			return len(p.Items),
-				errors.New(i.Title + ": Enclosure.Type is required")
-		}
-	} else if len(i.Link) == 0 {
-		return len(p.Items),
-			errors.New(i.Title + ": Link is required when not using Enclosure")
-	}
 
 	// corrective actions and overrides
 	//
