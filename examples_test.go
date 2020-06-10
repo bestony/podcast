@@ -157,7 +157,7 @@ func ExamplePodcast_Bytes() {
 
 	// Output:
 	// <?xml version="1.0" encoding="UTF-8"?>
-	// <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+	// <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:wavpub="https://www.wavpub.com/dtds/podcast-1.0.dtd">
 	//   <channel>
 	//     <title>eduncan911 Podcasts</title>
 	//     <link>http://eduncan911.com/</link>
