@@ -79,9 +79,7 @@ func New(title, link, description string,
 
 // AddAuthor adds the specified Author to the podcast.
 func (p *Podcast) AddAuthor(name, email string) {
-	if len(email) == 0 {
-		return
-	}
+
 	p.ManagingEditor = parseAuthorNameEmail(&Author{
 		Name:  name,
 		Email: email,
