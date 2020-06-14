@@ -27,7 +27,7 @@ type Podcast struct {
 	Docs           string `xml:"docs,omitempty"`
 	Generator      string `xml:"generator,omitempty"`
 	Language       string `xml:"language,omitempty"`
-	LastBuildDate  string `xml:"lastBuildDate,omitempty"`
+	LastBuildDate  string `xml:"lastBuildDate,-,omitempty"`
 	ManagingEditor string `xml:"managingEditor,omitempty"`
 	PubDate        string `xml:"pubDate,omitempty"`
 	Rating         string `xml:"rating,omitempty"`
@@ -68,10 +68,9 @@ func New(title, link, description string,
 		Description: &Description{
 			Text: description,
 		},
-		Generator:     fmt.Sprintf("go podcast v%s (github.com/eduncan911/podcast)", pVersion),
-		PubDate:       parseDateRFC1123Z(pubDate),
-		LastBuildDate: parseDateRFC1123Z(lastBuildDate),
-		Language:      "en-us",
+		Generator: fmt.Sprintf("go podcast v%s (github.com/eduncan911/podcast)", pVersion),
+		PubDate:   parseDateRFC1123Z(pubDate),
+		Language:  "en-us",
 
 		// setup dependency (could inject later)
 		encode: encoder,
@@ -310,13 +309,6 @@ func (p *Podcast) AddItem(i Item) (int, error) {
 // UTC time is used by default.
 func (p *Podcast) AddPubDate(datetime *time.Time) {
 	p.PubDate = parseDateRFC1123Z(datetime)
-}
-
-// AddLastBuildDate adds the datetime as a parsed PubDate.
-//
-// UTC time is used by default.
-func (p *Podcast) AddLastBuildDate(datetime *time.Time) {
-	p.LastBuildDate = parseDateRFC1123Z(datetime)
 }
 
 // Bytes returns an encoded []byte slice.

@@ -15,10 +15,10 @@ func ExampleNew() {
 	p := podcast.New(ti, l, d, &pubDate, &updatedDate)
 
 	fmt.Println(p.Title, p.Link, p.Description.Text, p.Language)
-	fmt.Println(p.PubDate, p.LastBuildDate)
+	fmt.Println(p.PubDate)
 	// Output:
 	// title link description en-us
-	// Sat, 04 Feb 2017 08:21:52 +0000 Mon, 06 Feb 2017 08:21:52 +0000
+	// Sat, 04 Feb 2017 08:21:52 +0000
 }
 
 func ExamplePodcast_AddAuthor() {
@@ -101,17 +101,6 @@ func ExamplePodcast_AddItem() {
 	// http://example.com/1.mp3 Episode 1 http://example.com/1.mp3 Description for Episode 1 &{{ }  me@test.com (the name)}     2017-04-22 08:21:52 +0000 UTC Sat, 22 Apr 2017 08:21:52 +0000 {{ } http://example.com/1.mp3 183 183 audio/mpeg audio/mpeg} me@test.com (the name)
 }
 
-func ExamplePodcast_AddLastBuildDate() {
-	p := podcast.New("title", "link", "description", nil, nil)
-	d := pubDate.AddDate(0, 0, -7)
-
-	p.AddLastBuildDate(&d)
-
-	fmt.Println(p.LastBuildDate)
-	// Output:
-	// Sat, 28 Jan 2017 08:21:52 +0000
-}
-
 func ExamplePodcast_AddPubDate() {
 	p := podcast.New("title", "link", "description", nil, nil)
 	d := pubDate.AddDate(0, 0, -5)
@@ -164,7 +153,6 @@ func ExamplePodcast_Bytes() {
 	//     <description><![CDATA[An example Podcast]]></description>
 	//     <generator>go podcast v1.3.1 (github.com/eduncan911/podcast)</generator>
 	//     <language>en-us</language>
-	//     <lastBuildDate>Mon, 06 Feb 2017 08:21:52 +0000</lastBuildDate>
 	//     <managingEditor>me@janedoe.com (Jane Doe)</managingEditor>
 	//     <pubDate>Sat, 04 Feb 2017 08:21:52 +0000</pubDate>
 	//     <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
