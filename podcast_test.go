@@ -29,7 +29,6 @@ func TestNewNonNils(t *testing.T) {
 	assert.EqualValues(t, l, p.Link)
 	assert.EqualValues(t, d, p.Description.Text)
 	assert.True(t, createdDate.Format(time.RFC1123Z) >= p.PubDate)
-	assert.True(t, updatedDate.Format(time.RFC1123Z) >= p.LastBuildDate)
 }
 
 func TestNewNils(t *testing.T) {
@@ -48,7 +47,6 @@ func TestNewNils(t *testing.T) {
 	assert.EqualValues(t, d, p.Description.Text)
 	// ensure time.Now().UTC() is set, or close to it
 	assert.True(t, now >= p.PubDate)
-	assert.True(t, now >= p.LastBuildDate)
 }
 
 func TestAddAuthorEmailEmpty(t *testing.T) {

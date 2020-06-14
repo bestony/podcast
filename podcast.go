@@ -27,8 +27,7 @@ type Podcast struct {
 	Docs           string `xml:"docs,omitempty"`
 	Generator      string `xml:"generator,omitempty"`
 	Language       string `xml:"language,omitempty"`
-	LastBuildDate  string `xml:"lastBuildDate,-,omitempty"`
-	ManagingEditor string `xml:"managingEditor,omitempty"` // TODO: Ready to delete
+	ManagingEditor string `xml:"managingEditor,omitempty"` // TODO: READ
 	PubDate        string `xml:"pubDate,omitempty"`
 	Rating         string `xml:"rating,omitempty"`
 	SkipHours      string `xml:"skipHours,omitempty"`
