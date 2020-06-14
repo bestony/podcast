@@ -27,7 +27,7 @@ type Item struct {
 	XMLName          xml.Name `xml:"item"`
 	GUID             string   `xml:"guid"`
 	Title            string   `xml:"title"`
-	Link             string   `xml:"link"`
+	Link             string   `xml:"link,omitempty"`
 	Description      *Description
 	Author           *Author    `xml:"-"`
 	AuthorFormatted  string     `xml:"author,omitempty"`
@@ -42,7 +42,7 @@ type Item struct {
 
 	// https://help.apple.com/itc/podcasts_connect/#/itcb54353390
 	IAuthor string `xml:"itunes:author,omitempty"`
-	ITitle  string `xml:"itunes:titile,omitempty"`
+	ITitle  string `xml:"itunes:title,omitempty"`
 
 	IImage             *IImage
 	IDuration          string `xml:"itunes:duration,omitempty"`
@@ -52,6 +52,7 @@ type Item struct {
 	IEpisodeType       string `xml:"itunes:episodeType,omitempty"`
 	IEpisode           uint8  `xml:"itunes:episode,omitempty"`
 	ISeason            uint8  `xml:"itunes:season,omitempty"`
+	IBlock             string `xml:"itunes:block,omitempty"`
 }
 
 // AddEnclosure adds the downloadable asset to the podcast Item.
