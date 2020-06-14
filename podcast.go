@@ -79,12 +79,7 @@ func New(title, link, description string,
 
 // AddAuthor adds the specified Author to the podcast.
 func (p *Podcast) AddAuthor(name, email string) {
-
-	p.ManagingEditor = parseAuthorNameEmail(&Author{
-		Name:  name,
-		Email: email,
-	})
-	p.IAuthor = p.ManagingEditor
+	p.IAuthor = name
 }
 
 // AddAtomLink adds a FQDN reference to an atom feed.

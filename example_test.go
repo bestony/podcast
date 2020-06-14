@@ -81,10 +81,9 @@ func Example_httpHandlers() {
 	//     <description><![CDATA[An example Podcast]]></description>
 	//     <generator>go podcast v1.3.1 (github.com/eduncan911/podcast)</generator>
 	//     <language>en-us</language>
-	//     <managingEditor>me@janedoe.com (Jane Doe)</managingEditor>
 	//     <pubDate>Sat, 04 Feb 2017 08:21:52 +0000</pubDate>
 	//     <atom:link href="http://eduncan911.com/feed.rss" rel="self" type="application/rss+xml"></atom:link>
-	//     <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
+	//     <itunes:author>Jane Doe</itunes:author>
 	//     <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
 	//     <itunes:explicit>no</itunes:explicit>
 	//     <item>
@@ -95,7 +94,7 @@ func Example_httpHandlers() {
 	//       <pubDate>Sun, 05 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://e.com/1.mp3" length="110" type="audio/mpeg"></enclosure>
 	//       <wavpub:source>self</wavpub:source>
-	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
+	//       <itunes:author>Jane Doe</itunes:author>
 	//       <itunes:image href="http://example.com/episode-1.png"></itunes:image>
 	//     </item>
 	//     <item>
@@ -106,7 +105,7 @@ func Example_httpHandlers() {
 	//       <pubDate>Mon, 06 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://e.com/2.mp3" length="165" type="audio/mpeg"></enclosure>
 	//       <wavpub:source>self</wavpub:source>
-	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
+	//       <itunes:author>Jane Doe</itunes:author>
 	//       <itunes:image href="http://example.com/episode-2.png"></itunes:image>
 	//     </item>
 	//   </channel>
@@ -164,10 +163,9 @@ func Example_ioWriter() {
 	//     <description><![CDATA[An example Podcast]]></description>
 	//     <generator>go podcast v1.3.1 (github.com/eduncan911/podcast)</generator>
 	//     <language>en-us</language>
-	//     <managingEditor>jane.doe@example.com (Jane Doe)</managingEditor>
 	//     <pubDate>Wed, 01 Feb 2017 08:21:52 +0000</pubDate>
 	//     <atom:link href="http://example.com/atom.rss" rel="self" type="application/rss+xml"></atom:link>
-	//     <itunes:author>jane.doe@example.com (Jane Doe)</itunes:author>
+	//     <itunes:author>Jane Doe</itunes:author>
 	//     <itunes:image href="http://example.com/podcast.jpg"></itunes:image>
 	//     <item>
 	//       <guid>http://example.com/9.mp3</guid>
@@ -176,7 +174,7 @@ func Example_ioWriter() {
 	//       <description><![CDATA[Description for Episode 9]]></description>
 	//       <pubDate>Mon, 13 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://example.com/9.mp3" length="550" type="audio/mpeg"></enclosure>
-	//       <itunes:author>jane.doe@example.com (Jane Doe)</itunes:author>
+	//       <itunes:author>Jane Doe</itunes:author>
 	//       <itunes:image href="http://example.com/episode-9.png"></itunes:image>
 	//     </item>
 	//     <item>
@@ -186,7 +184,7 @@ func Example_ioWriter() {
 	//       <description><![CDATA[Description for Episode 10]]></description>
 	//       <pubDate>Tue, 14 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://example.com/10.mp3" length="605" type="audio/mpeg"></enclosure>
-	//       <itunes:author>jane.doe@example.com (Jane Doe)</itunes:author>
+	//       <itunes:author>Jane Doe</itunes:author>
 	//       <itunes:image href="http://example.com/episode-10.png"></itunes:image>
 	//     </item>
 	//   </channel>

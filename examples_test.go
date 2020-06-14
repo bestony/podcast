@@ -27,11 +27,9 @@ func ExamplePodcast_AddAuthor() {
 	// add the Author
 	p.AddAuthor("the name", "me@test.com")
 
-	fmt.Println(p.ManagingEditor)
 	fmt.Println(p.IAuthor)
 	// Output:
-	// me@test.com (the name)
-	// me@test.com (the name)
+	// the name
 }
 
 func ExamplePodcast_AddCategory() {
@@ -98,7 +96,7 @@ func ExamplePodcast_AddItem() {
 		pp.IAuthor, pp.IDuration, pp.IExplicit, pp.IIsClosedCaptioned,
 		pp.IOrder)
 	// Output:
-	// http://example.com/1.mp3 Episode 1 http://example.com/1.mp3 Description for Episode 1 &{{ }  me@test.com (the name)}     2017-04-22 08:21:52 +0000 UTC Sat, 22 Apr 2017 08:21:52 +0000 {{ } http://example.com/1.mp3 183 183 audio/mpeg audio/mpeg} me@test.com (the name)
+	// http://example.com/1.mp3 Episode 1 http://example.com/1.mp3 Description for Episode 1 &{{ }  the name}     2017-04-22 08:21:52 +0000 UTC Sat, 22 Apr 2017 08:21:52 +0000 {{ } http://example.com/1.mp3 183 183 audio/mpeg audio/mpeg} the name
 }
 
 func ExamplePodcast_AddPubDate() {
@@ -153,9 +151,8 @@ func ExamplePodcast_Bytes() {
 	//     <description><![CDATA[An example Podcast]]></description>
 	//     <generator>go podcast v1.3.1 (github.com/eduncan911/podcast)</generator>
 	//     <language>en-us</language>
-	//     <managingEditor>me@janedoe.com (Jane Doe)</managingEditor>
 	//     <pubDate>Sat, 04 Feb 2017 08:21:52 +0000</pubDate>
-	//     <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
+	//     <itunes:author>Jane Doe</itunes:author>
 	//     <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
 	//     <item>
 	//       <guid>http://example.com/5.mp3</guid>
@@ -163,7 +160,7 @@ func ExamplePodcast_Bytes() {
 	//       <link>http://example.com/5.mp3</link>
 	//       <description><![CDATA[Description for Episode 5]]></description>
 	//       <pubDate>Sun, 12 Feb 2017 08:21:52 +0000</pubDate>
-	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
+	//       <itunes:author>Jane Doe</itunes:author>
 	//       <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
 	//     </item>
 	//     <item>
@@ -172,7 +169,7 @@ func ExamplePodcast_Bytes() {
 	//       <link>http://example.com/6.mp3</link>
 	//       <description><![CDATA[Description for Episode 6]]></description>
 	//       <pubDate>Mon, 13 Feb 2017 08:21:52 +0000</pubDate>
-	//       <itunes:author>me@janedoe.com (Jane Doe)</itunes:author>
+	//       <itunes:author>Jane Doe</itunes:author>
 	//       <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
 	//     </item>
 	//   </channel>
