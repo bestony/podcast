@@ -91,9 +91,6 @@ func (p *Podcast) AddAuthor(name, email string) {
 
 // AddAtomLink adds a FQDN reference to an atom feed.
 func (p *Podcast) AddAtomLink(href string) {
-	if len(href) == 0 {
-		return
-	}
 	p.AtomLink = &AtomLink{
 		HREF: href,
 		Rel:  "self",
