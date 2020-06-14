@@ -109,19 +109,6 @@ func TestAddCategorySubCatEmpty2(t *testing.T) {
 	assert.Len(t, p.ICategories[0].ICategories, 2)
 }
 
-func TestAddImageEmpty(t *testing.T) {
-	t.Parallel()
-
-	// arrange
-	p := podcast.New("title", "link", "description", nil, nil)
-
-	// act
-	p.AddImage("")
-
-	// assert
-	assert.Nil(t, p.IImage)
-}
-
 func TestAddItemEnclosureLengthMin(t *testing.T) {
 	t.Parallel()
 

@@ -206,10 +206,6 @@ func (p *Podcast) AddCategory(category string, subCategories []string) {
 // images for mobile devices, Apple recommends compressing your
 // image files.
 func (p *Podcast) AddImage(url string) {
-	if len(url) == 0 {
-		return
-	}
-
 	p.IImage = &IImage{HREF: url}
 }
 
