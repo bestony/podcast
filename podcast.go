@@ -19,7 +19,7 @@ const (
 type Podcast struct {
 	XMLName        xml.Name `xml:"channel"`
 	Title          string   `xml:"title"`
-	Link           string   `xml:"link"`
+	Link           string   `xml:"link,omitempty"`
 	Description    *Description
 	Category       string `xml:"category,omitempty"`
 	Cloud          string `xml:"cloud,omitempty"`
