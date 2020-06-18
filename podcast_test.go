@@ -144,7 +144,6 @@ func TestAddItemEnclosureNoLinkOverride(t *testing.T) {
 	assert.EqualValues(t, 1, added)
 	assert.NoError(t, err)
 	assert.Len(t, p.Items, 1)
-	assert.EqualValues(t, i.Enclosure.URL, p.Items[0].Link)
 }
 
 func TestAddItemEnclosureLinkPresentNoOverride(t *testing.T) {

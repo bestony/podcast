@@ -170,7 +170,6 @@ func Example_ioWriter() {
 	//     <item>
 	//       <guid>http://example.com/9.mp3</guid>
 	//       <title>Episode 9</title>
-	//       <link>http://example.com/9.mp3</link>
 	//       <description><![CDATA[Description for Episode 9]]></description>
 	//       <pubDate>Mon, 13 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://example.com/9.mp3" length="550" type="audio/mpeg"></enclosure>
@@ -180,7 +179,6 @@ func Example_ioWriter() {
 	//     <item>
 	//       <guid>http://example.com/10.mp3</guid>
 	//       <title>Episode 10</title>
-	//       <link>http://example.com/10.mp3</link>
 	//       <description><![CDATA[Description for Episode 10]]></description>
 	//       <pubDate>Tue, 14 Feb 2017 08:21:52 +0000</pubDate>
 	//       <enclosure url="http://example.com/10.mp3" length="605" type="audio/mpeg"></enclosure>

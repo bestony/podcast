@@ -90,13 +90,13 @@ func ExamplePodcast_AddItem() {
 	}
 	pp := p.Items[0]
 	fmt.Println(
-		pp.GUID, pp.Title, pp.Link, pp.Description.Text, pp.Author,
+		pp.GUID, pp.Title, pp.Description.Text, pp.Author,
 		pp.AuthorFormatted, pp.Category, pp.Comments, pp.Source,
 		pp.PubDate, pp.PubDateFormatted, *pp.Enclosure,
 		pp.IAuthor, pp.IDuration, pp.IExplicit, pp.IIsClosedCaptioned,
 		pp.IOrder)
 	// Output:
-	// http://example.com/1.mp3 Episode 1 http://example.com/1.mp3 Description for Episode 1 &{{ }  the name}     2017-04-22 08:21:52 +0000 UTC Sat, 22 Apr 2017 08:21:52 +0000 {{ } http://example.com/1.mp3 183 183 audio/mpeg audio/mpeg} the name
+	// http://example.com/1.mp3 Episode 1 Description for Episode 1 &{{ }  the name}     2017-04-22 08:21:52 +0000 UTC Sat, 22 Apr 2017 08:21:52 +0000 {{ } http://example.com/1.mp3 183 183 audio/mpeg audio/mpeg} the name
 }
 
 func ExamplePodcast_AddPubDate() {

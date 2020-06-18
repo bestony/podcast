@@ -260,12 +260,6 @@ func (p *Podcast) AddItem(i Item) (int, error) {
 		}
 		i.Enclosure.LengthFormatted = strconv.FormatInt(i.Enclosure.Length, 10)
 		i.Enclosure.TypeFormatted = i.Enclosure.Type.String()
-
-		// allow Link to be set for article references to Downloads,
-		// otherwise set it to the enclosurer's URL.
-		if len(i.Link) == 0 {
-			i.Link = i.Enclosure.URL
-		}
 	} else {
 		i.GUID = i.Link // yep, GUID is the Permlink URL
 	}
