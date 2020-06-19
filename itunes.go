@@ -21,7 +21,7 @@ type ICategory struct {
 // images for mobile devices, Apple recommends compressing your
 // image files.
 type IImage struct {
-	XMLName xml.Name `xml:"itunes:image"`
+	XMLName xml.Name `xml:"itunes:image,omitempty"`
 	HREF    string   `xml:"href,attr"`
 }
 
