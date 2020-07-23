@@ -127,6 +127,15 @@ func (i *Item) AddWavPubSource(source string) {
 	i.WavPubSource = source
 }
 
+// AddExplicit can set itunes Explicit
+func (i *Item) AddExplicit(explicit bool) {
+	if explicit {
+		i.IExplicit = "yes"
+	} else {
+		i.IExplicit = "no"
+	}
+}
+
 var parseDuration = func(duration int64) string {
 	h := duration / 3600
 	duration = duration % 3600

@@ -380,3 +380,12 @@ func (p *Podcast) AddOwner(name, email string) {
 		Name:  name,
 	}
 }
+
+// AddExplicit can set itunes Explicit
+func (p *Podcast) AddExplicit(explicit bool) {
+	if explicit {
+		p.IExplicit = "yes"
+	} else {
+		p.IExplicit = "no"
+	}
+}
