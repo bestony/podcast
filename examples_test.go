@@ -176,6 +176,71 @@ func ExamplePodcast_Bytes() {
 	// </rss>
 }
 
+func ExamplePodcastNoDescription_Bytes() {
+	p := podcast.New(
+		"eduncan911 Podcasts",
+		"http://eduncan911.com/",
+		"",
+		&pubDate, &updatedDate,
+	)
+	p.AddAuthor("Jane Doe", "me@janedoe.com")
+	p.AddImage("http://janedoe.com/i.jpg")
+
+	for i := int64(5); i < 7; i++ {
+		n := strconv.FormatInt(i, 10)
+		d := pubDate.AddDate(0, 0, int(i+3))
+
+		item := podcast.Item{
+			Title: "Episode " + n,
+			Link:  "http://example.com/" + n + ".mp3",
+			Description: &podcast.Description{
+				Text: "Description for Episode " + n,
+			},
+			PubDate: &d,
+		}
+		item.AddImage("http://janedoe.com/i.jpg")
+		if _, err := p.AddItem(item); err != nil {
+			fmt.Println(item.Title, ": error", err.Error())
+			break
+		}
+	}
+
+	// call Podcast.Bytes() to return a byte array
+	os.Stdout.Write(p.Bytes())
+
+	// Output:
+	// <?xml version="1.0" encoding="UTF-8"?>
+	// <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:wavpub="https://www.wavpub.com/dtds/podcast-1.0.dtd">
+	//   <channel>
+	//     <title>eduncan911 Podcasts</title>
+	//     <link>http://eduncan911.com/</link>
+	//     <generator>go podcast v1.3.1 (github.com/eduncan911/podcast)</generator>
+	//     <language>en-us</language>
+	//     <pubDate>Sat, 04 Feb 2017 08:21:52 +0000</pubDate>
+	//     <itunes:author>Jane Doe</itunes:author>
+	//     <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
+	//     <item>
+	//       <guid>http://example.com/5.mp3</guid>
+	//       <title>Episode 5</title>
+	//       <link>http://example.com/5.mp3</link>
+	//       <description><![CDATA[Description for Episode 5]]></description>
+	//       <pubDate>Sun, 12 Feb 2017 08:21:52 +0000</pubDate>
+	//       <itunes:author>Jane Doe</itunes:author>
+	//       <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
+	//     </item>
+	//     <item>
+	//       <guid>http://example.com/6.mp3</guid>
+	//       <title>Episode 6</title>
+	//       <link>http://example.com/6.mp3</link>
+	//       <description><![CDATA[Description for Episode 6]]></description>
+	//       <pubDate>Mon, 13 Feb 2017 08:21:52 +0000</pubDate>
+	//       <itunes:author>Jane Doe</itunes:author>
+	//       <itunes:image href="http://janedoe.com/i.jpg"></itunes:image>
+	//     </item>
+	//   </channel>
+	// </rss>
+}
+
 func ExampleItem_AddPubDate() {
 	p := podcast.New("title", "link", "description", nil, nil)
 	i := podcast.Item{
