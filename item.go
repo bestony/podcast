@@ -130,9 +130,9 @@ func (i *Item) AddWavPubSource(source string) {
 // AddExplicit can set itunes Explicit
 func (i *Item) AddExplicit(explicit bool) {
 	if explicit {
-		i.IExplicit = "yes"
+		i.IExplicit = "true"
 	} else {
-		i.IExplicit = "no"
+		i.IExplicit = "false"
 	}
 }
 
